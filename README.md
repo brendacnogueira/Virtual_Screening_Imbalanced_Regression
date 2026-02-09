@@ -1,1 +1,1 @@
-# Virtual_Screening_Imbalanced_Regression
+# Rethinking Virtual Screening From the Lenses of Imbalanced Regression
