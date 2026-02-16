@@ -39,7 +39,7 @@ selection_metric: metric to loss function and hyperparameter optimization (MAE: 
 model_list = ["kNN","XGBoost",'SVR',"DNN"] ##,"kNN","XGBoost",'SVR',"DNN"
 cv_folds=5
 
-selection_metric =["BMSE","RANKSIM-MAE","RANKSIM-MSE"]#"RANKSIM-MSE","RANKSIM-LDS-MAE","RANKSIM-LDS-MSE","SERA",'LDS-MAE','LDS-MSE',"MAE","MSE","SERA","BMSE"
+selection_metric =["BMSE","RANKSIM-MSE","RANKSIM-LDS-MAE","RANKSIM-LDS-MSE","SERA",'LDS-MAE','LDS-MSE',"MAE","MSE","SERA"]#"RANKSIM-MSE","RANKSIM-LDS-MAE","RANKSIM-LDS-MSE","SERA",'LDS-MAE','LDS-MSE',"MAE","MSE","SERA","BMSE"
 
 db_path = './dataset/'
 # %%
@@ -122,7 +122,6 @@ for target in regression_tids:
                 #model_fpath = create_directory(f"./trained_models/{target}/{model}_{sel_metric}/", verbose=False)
 
 
-                #ph={"method":"range","npts": 3,"control_pts":[0,0,0,8,0.1,0,9,1,0]}
 
                 if model == 'DNN': #and sel_metric=="SERA"
                     ml_model = DNN(training_set, model, training_set.features.shape[1], seed=trial,  ph=ph, metric=sel_metric)
@@ -142,7 +141,7 @@ for target in regression_tids:
 
                 #Performance df
                 performance_test = model_eval_test.pred_performance
-                print(performance_test)
+              
                 #performance_test["trial"] = trial
                 
                 #performance_test_df = pd.concat([performance_test_df, performance_test])
